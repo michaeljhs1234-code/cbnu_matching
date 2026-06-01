@@ -1,0 +1,6 @@
+{
+  "crons": [
+    { "path": "/api/cron/sync-contests", "schedule": "0 15 * * *" },
+    { "path": "/api/cron/cleanup-matches", "schedule": "0 15 * * *" }
+  ]
+}
