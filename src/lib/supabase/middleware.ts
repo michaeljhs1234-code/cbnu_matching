@@ -32,6 +32,31 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  // 프로필 존재 여부 확인 및 자동 복구 (이메일 인증 스킵 혹은 직접 로그인의 경우 대비)
+  if (user) {
+    try {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('id', user.id)
+        .maybeSingle();
+
+      if (!profile) {
+        const meta = user.user_metadata;
+        await supabase.from('profiles').insert({
+          id: user.id,
+          email: user.email!,
+          nickname: meta.nickname || `user_${user.id.substring(0, 8)}`,
+          full_name: meta.full_name || '',
+          student_id: meta.student_id || '',
+          department: meta.department || '',
+        });
+      }
+    } catch {
+      // 로컬 빌드 혹은 에러 시 중단 방지
+    }
+  }
+
   // 공개 경로 정의
   const publicPaths = ['/', '/login', '/signup', '/auth'];
   const isPublicPath = publicPaths.some(

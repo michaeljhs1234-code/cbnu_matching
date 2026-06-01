@@ -341,3 +341,25 @@ ALTER PUBLICATION supabase_realtime ADD TABLE messages;
 ALTER PUBLICATION supabase_realtime ADD TABLE contest_chat_messages;
 ALTER PUBLICATION supabase_realtime ADD TABLE match_applications;
 ALTER PUBLICATION supabase_realtime ADD TABLE contest_matches;
+
+-- ─── 18. profiles 자동 생성을 위한 트리거 ────────────────────
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO public.profiles (id, email, nickname, full_name, student_id, department, role)
+  VALUES (
+    new.id,
+    new.email,
+    coalesce(new.raw_user_meta_data->>'nickname', 'user_' || substr(new.id::text, 1, 8)),
+    new.raw_user_meta_data->>'full_name',
+    coalesce(new.raw_user_meta_data->>'student_id', ''),
+    new.raw_user_meta_data->>'department',
+    'user'
+  );
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
