@@ -22,6 +22,11 @@ const FACILITIES = [
   { value: 'basketball_b', label: '🏀 농구장 B코트', sport: '농구' },
   { value: 'soccer_field', label: '⚽ 대운동장 (축구장)', sport: '축구' },
   { value: 'sub_field', label: '⚽ 소운동장 (보조구장)', sport: '축구' },
+  { value: 'tennis_a', label: '🎾 테니스장 A코트', sport: '테니스' },
+  { value: 'tennis_b', label: '🎾 테니스장 B코트', sport: '테니스' },
+  { value: 'tennis_c', label: '🎾 테니스장 C코트', sport: '테니스' },
+  { value: 'tennis_d', label: '🎾 테니스장 D코트', sport: '테니스' },
+  { value: 'tennis_e', label: '🎾 테니스장 E코트', sport: '테니스' },
 ];
 
 function getKstNow(): Date {

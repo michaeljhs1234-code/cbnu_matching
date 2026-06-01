@@ -14,6 +14,11 @@ const FACILITY_MAP: Record<string, { label: string; sport: Sport }> = {
   basketball_b: { label: '체육진흥원 농구장 B코트', sport: '농구' },
   soccer_field: { label: '체육진흥원 대운동장 (축구장)', sport: '축구' },
   sub_field: { label: '체육진흥원 소운동장 (보조구장)', sport: '축구' },
+  tennis_a: { label: '체육진흥원 테니스장 A코트', sport: '테니스' },
+  tennis_b: { label: '체육진흥원 테니스장 B코트', sport: '테니스' },
+  tennis_c: { label: '체육진흥원 테니스장 C코트', sport: '테니스' },
+  tennis_d: { label: '체육진흥원 테니스장 D코트', sport: '테니스' },
+  tennis_e: { label: '체육진흥원 테니스장 E코트', sport: '테니스' },
 };
 
 function MatchWriteForm() {

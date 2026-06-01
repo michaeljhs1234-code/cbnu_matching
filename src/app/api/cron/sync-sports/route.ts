@@ -8,6 +8,11 @@ const SERVICES: Record<string, string> = {
   basketball_b:  'mcSVwWaYZ8NkkZLEbMNwxGiQk5CTlG2Xkmpv',  // 농구장 B코트
   soccer_field:  'TODO_FILL_SOCCER_FIELD_CODE',            // 대운동장 (축구장)
   sub_field:     'TODO_FILL_SUB_FIELD_CODE',               // 소운동장 (보조구장)
+  tennis_a:      'TODO_FILL_TENNIS_A_CODE',                // 테니스장 A코트
+  tennis_b:      'TODO_FILL_TENNIS_B_CODE',                // 테니스장 B코트
+  tennis_c:      'TODO_FILL_TENNIS_C_CODE',                // 테니스장 C코트
+  tennis_d:      'TODO_FILL_TENNIS_D_CODE',                // 테니스장 D코트
+  tennis_e:      'TODO_FILL_TENNIS_E_CODE',                // 테니스장 E코트
 };
 
 const COURT_INDEX: Record<string, number> = {
@@ -17,6 +22,11 @@ const COURT_INDEX: Record<string, number> = {
   basketball_b: 1,
   soccer_field: 0,
   sub_field:    0,
+  tennis_a:     0,
+  tennis_b:     1,
+  tennis_c:     2,
+  tennis_d:     3,
+  tennis_e:     4,
 };
 
 const FACILITY_HOURS: Record<string, [number, number]> = {
@@ -26,6 +36,11 @@ const FACILITY_HOURS: Record<string, [number, number]> = {
   basketball_b:  [6, 22],
   soccer_field:  [6, 22],
   sub_field:     [6, 22],
+  tennis_a:      [6, 22],
+  tennis_b:      [6, 22],
+  tennis_c:      [6, 22],
+  tennis_d:      [6, 22],
+  tennis_e:      [6, 22],
 };
 
 function getKstNow(): Date {
