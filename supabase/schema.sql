@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS profiles (
   email        TEXT UNIQUE NOT NULL,
   nickname     TEXT UNIQUE NOT NULL,
   full_name    TEXT,
-  student_id   CHAR(8) NOT NULL,
+  student_id   CHAR(10) NOT NULL,
   department   TEXT,
   skill_level  TEXT CHECK (skill_level IN ('초급','중급','고수')),
   contest_count INTEGER DEFAULT 0,

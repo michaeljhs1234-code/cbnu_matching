@@ -147,7 +147,7 @@ export default function ProfilePage() {
 
   if (!profile) return null;
 
-  const maskedStudentId = profile.student_id.substring(0, 3) + '*'.repeat(5);
+  const maskedStudentId = profile.student_id.substring(0, 4) + '*'.repeat(6);
   const maskedEmail = profile.email.replace(/^(.{3}).*(@.*)$/, '$1****$2');
 
   return (

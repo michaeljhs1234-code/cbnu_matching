@@ -63,7 +63,7 @@ export default function SignupPage() {
 
   const validateStudentId = (id: string) => {
     if (!id) return '학번을 입력해 주세요.';
-    if (!/^[0-9]{8}$/.test(id)) return '학번은 8자리 숫자여야 합니다.';
+    if (!/^[0-9]{10}$/.test(id)) return '학번은 10자리 숫자여야 합니다.';
     const year = parseInt(id.substring(0, 4));
     const currentYear = new Date().getFullYear();
     if (year < 1990 || year > currentYear) return '유효하지 않은 입학연도입니다.';
@@ -327,15 +327,15 @@ export default function SignupPage() {
               <label className="block text-sm font-medium text-text mb-1.5">학번</label>
               <input
                 type="text"
-                placeholder="20250001"
+                placeholder="2025000001"
                 value={form.studentId}
                 onChange={(e) => {
                   const v = e.target.value.replace(/\D/g, '');
                   handleChange('studentId', v);
                 }}
                 className={inputClass('studentId')}
-                maxLength={8}
-                pattern="[0-9]{8}"
+                maxLength={10}
+                pattern="[0-9]{10}"
                 inputMode="numeric"
               />
               {errors.studentId && <p className="mt-1 text-xs text-danger">{errors.studentId}</p>}
