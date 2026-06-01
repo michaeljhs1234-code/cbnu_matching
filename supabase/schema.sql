@@ -352,10 +352,11 @@ BEGIN
     new.email,
     coalesce(new.raw_user_meta_data->>'nickname', 'user_' || substr(new.id::text, 1, 8)),
     new.raw_user_meta_data->>'full_name',
-    coalesce(new.raw_user_meta_data->>'student_id', ''),
+    coalesce(new.raw_user_meta_data->>'student_id', '0000000000'),
     new.raw_user_meta_data->>'department',
     'user'
-  );
+  )
+  ON CONFLICT (id) DO NOTHING;
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;

@@ -252,18 +252,27 @@ export default function MatchListPage() {
   return (
     <div>
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-text">스포츠 매치</h1>
           <p className="text-sm text-text-secondary mt-1">원하는 종목과 수준의 매치를 찾아보세요</p>
         </div>
-        <Link
-          href="/match/write"
-          className="flex items-center gap-2 px-5 py-2.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-all hover:shadow-lg hover:-translate-y-0.5"
-        >
-          <Plus className="w-5 h-5" />
-          <span className="hidden sm:inline">매치글 작성</span>
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/sports/facilities"
+            className="flex items-center gap-2 px-5 py-2.5 bg-primary/10 text-primary font-semibold rounded-xl hover:bg-primary/20 transition-all hover:-translate-y-0.5"
+          >
+            <MapPin className="w-5 h-5" />
+            <span>체육시설 예약현황</span>
+          </Link>
+          <Link
+            href="/match/write"
+            className="flex items-center gap-2 px-5 py-2.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-all hover:shadow-lg hover:-translate-y-0.5"
+          >
+            <Plus className="w-5 h-5" />
+            <span className="hidden sm:inline">매치글 작성</span>
+          </Link>
+        </div>
       </div>
 
       {/* Filters */}
